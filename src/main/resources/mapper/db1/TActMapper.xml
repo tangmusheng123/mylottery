@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.mylottery.dao.dao1.TActMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.mylottery.dao.entity.db1.TAct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="actType" jdbcType="VARCHAR" property="actType" />
+    <result column="actName" jdbcType="VARCHAR" property="actName" />
+    <result column="actInfo" jdbcType="VARCHAR" property="actInfo" />
+    <result column="platformType" jdbcType="VARCHAR" property="platformType" />
+    <result column="createDt" jdbcType="TIMESTAMP" property="createDt" />
+  </resultMap>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.mylottery.dao.entity.db1.TAct">
+    update t_act
+    <trim prefix="set" suffixOverrides=",">
+      <if test="actType != null" >
+        actType = #{actType,jdbcType=VARCHAR},
+      </if>
+      <if test="actName != null" >
+        actName = #{actName,jdbcType=VARCHAR},
+      </if>
+      <if test="actInfo != null" >
+        actInfo = #{actInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="platformType != null" >
+        platformType = #{platformType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, actType,platformType,actName,actInfo, createDt
+    from t_act where 1=1
+    <if test="platformType != null and platformType !='' ">
+      AND platformType=#{platformType}
+    </if>
+  </select>
+</mapper>

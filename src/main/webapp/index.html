@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" >
+    </script>
+</head>
+<body>
+<form id="myFormId" action="http://localhost:8080/file/uploadFile" method="post" enctype="multipart/form-data" >
+    <table class="tableStyle" formMode="transparent">
+        <tr></tr>
+        <tr>
+            <td>
+                <input type="file" id="file" name="file" />
+            </td>
+        </tr>
+        <tr>
+            <td>年份</td>
+            <td><input type="text" name="year" ><br/></td>
+        </tr>
+        <tr>
+            <td>月份</td>
+            <td><input type="text" name="month"/><br/></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="submit" value="提交数据"/>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

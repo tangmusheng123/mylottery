@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.mylottery.dao.dao2.TSdTbsobillMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.mylottery.dao.entity.db2.TSdTbsobill">
+    <id column="FID" jdbcType="VARCHAR" property="fid" />
+    <result column="FTRADEPROCESSSTATUS" jdbcType="INTEGER" property="ftradeprocessstatus" />
+    <result column="FCREATETIME" jdbcType="TIMESTAMP" property="fcreatetime" />
+    <result column="FSALEORDERID" jdbcType="VARCHAR" property="fsaleorderid" />
+    <result column="FSALEORDERNUMBER" jdbcType="VARCHAR" property="fsaleordernumber" />
+    <result column="FLASTUPDATETIME" jdbcType="TIMESTAMP" property="flastupdatetime" />
+    <result column="FADJUSTFEE" jdbcType="VARCHAR" property="fadjustfee" />
+    <result column="falipayid" jdbcType="VARCHAR" property="falipayid" />
+    <result column="FALIPAYNO" jdbcType="VARCHAR" property="falipayno" />
+    <result column="FALIPAYURL" jdbcType="VARCHAR" property="falipayurl" />
+    <result column="FALIPAYWARNMSG" jdbcType="VARCHAR" property="falipaywarnmsg" />
+    <result column="FAREAID" jdbcType="VARCHAR" property="fareaid" />
+    <result column="FAVAILABLECONFIRMFEE" jdbcType="VARCHAR" property="favailableconfirmfee" />
+    <result column="fbuyeralipayno" jdbcType="VARCHAR" property="fbuyeralipayno" />
+    <result column="FBUYERAREA" jdbcType="VARCHAR" property="fbuyerarea" />
+    <result column="FBUYERCODFEE" jdbcType="VARCHAR" property="fbuyercodfee" />
+    <result column="fbuyeremail" jdbcType="VARCHAR" property="fbuyeremail" />
+    <result column="FBUYERFLAG" jdbcType="BIGINT" property="fbuyerflag" />
+    <result column="fbuyernick" jdbcType="VARCHAR" property="fbuyernick" />
+    <result column="FBUYEROBTAINPOINTFEE" jdbcType="BIGINT" property="fbuyerobtainpointfee" />
+    <result column="FBUYERRATE" jdbcType="BIT" property="fbuyerrate" />
+    <result column="FCANRATE" jdbcType="BIT" property="fcanrate" />
+    <result column="FCODFEE" jdbcType="VARCHAR" property="fcodfee" />
+    <result column="FCODSTATUS" jdbcType="VARCHAR" property="fcodstatus" />
+    <result column="FCOMMISSIONFEE" jdbcType="VARCHAR" property="fcommissionfee" />
+    <result column="FCONSIGNTIME" jdbcType="TIMESTAMP" property="fconsigntime" />
+    <result column="FCREATED" jdbcType="TIMESTAMP" property="fcreated" />
+    <result column="FCREDITCARDFEE" jdbcType="VARCHAR" property="fcreditcardfee" />
+    <result column="FDISCOUNTFEE" jdbcType="VARCHAR" property="fdiscountfee" />
+    <result column="FENDTIME" jdbcType="TIMESTAMP" property="fendtime" />
+    <result column="FETICKETEXT" jdbcType="VARCHAR" property="feticketext" />
+    <result column="FEXPRESSAGENCYFEE" jdbcType="VARCHAR" property="fexpressagencyfee" />
+    <result column="FHASBUYERMESSAGE" jdbcType="BIT" property="fhasbuyermessage" />
+    <result column="FHASPOSTFEE" jdbcType="BIT" property="fhaspostfee" />
+    <result column="FHASYFX" jdbcType="BIT" property="fhasyfx" />
+    <result column="FIID" jdbcType="VARCHAR" property="fiid" />
+    <result column="FINVOICENAME" jdbcType="VARCHAR" property="finvoicename" />
+    <result column="FIS3D" jdbcType="BIT" property="fis3d" />
+    <result column="FISBRANDSALE" jdbcType="BIT" property="fisbrandsale" />
+    <result column="FISFORCEWLB" jdbcType="BIT" property="fisforcewlb" />
+    <result column="FISLGTYPE" jdbcType="BIT" property="fislgtype" />
+    <result column="FISPARTCONSIGN" jdbcType="BIT" property="fispartconsign" />
+    <result column="FLGAGING" jdbcType="VARCHAR" property="flgaging" />
+    <result column="FLGAGINGTYPE" jdbcType="VARCHAR" property="flgagingtype" />
+    <result column="FMARKDESC" jdbcType="VARCHAR" property="fmarkdesc" />
+    <result column="FMODIFIED" jdbcType="TIMESTAMP" property="fmodified" />
+    <result column="FNUM" jdbcType="BIGINT" property="fnum" />
+    <result column="FNUMIID" jdbcType="BIGINT" property="fnumiid" />
+    <result column="FNUTFEATURE" jdbcType="VARCHAR" property="fnutfeature" />
+    <result column="FPAYTIME" jdbcType="TIMESTAMP" property="fpaytime" />
+    <result column="FPAYMENT" jdbcType="VARCHAR" property="fpayment" />
+    <result column="FPOINTFEE" jdbcType="BIGINT" property="fpointfee" />
+    <result column="FPOSTFEE" jdbcType="VARCHAR" property="fpostfee" />
+    <result column="FPRICE" jdbcType="VARCHAR" property="fprice" />
+    <result column="FREALPOINTFEE" jdbcType="BIGINT" property="frealpointfee" />
+    <result column="FRECEIVEDPAYMENT" jdbcType="VARCHAR" property="freceivedpayment" />
+    <result column="freceiveraddress" jdbcType="VARCHAR" property="freceiveraddress" />
+    <result column="FRECEIVERCITY" jdbcType="VARCHAR" property="freceivercity" />
+    <result column="FRECEIVERDISTRICT" jdbcType="VARCHAR" property="freceiverdistrict" />
+    <result column="freceivermobile" jdbcType="VARCHAR" property="freceivermobile" />
+    <result column="freceivername" jdbcType="VARCHAR" property="freceivername" />
+    <result column="freceiverphone" jdbcType="VARCHAR" property="freceiverphone" />
+    <result column="FRECEIVERSTATE" jdbcType="VARCHAR" property="freceiverstate" />
+    <result column="FRECEIVERZIP" jdbcType="VARCHAR" property="freceiverzip" />
+    <result column="FSELLERALIPAYNO" jdbcType="VARCHAR" property="fselleralipayno" />
+    <result column="FSELLERCANRATE" jdbcType="BIT" property="fsellercanrate" />
+    <result column="FSELLERCODFEE" jdbcType="VARCHAR" property="fsellercodfee" />
+    <result column="FSELLEREMAIL" jdbcType="VARCHAR" property="fselleremail" />
+    <result column="FSELLERFLAG" jdbcType="BIGINT" property="fsellerflag" />
+    <result column="FSELLERMOBILE" jdbcType="VARCHAR" property="fsellermobile" />
+    <result column="FSELLERNAME" jdbcType="VARCHAR" property="fsellername" />
+    <result column="FSELLERNICK" jdbcType="VARCHAR" property="fsellernick" />
+    <result column="FSELLERPHONE" jdbcType="VARCHAR" property="fsellerphone" />
+    <result column="FSELLERRATE" jdbcType="BIT" property="fsellerrate" />
+    <result column="FSENDTIME" jdbcType="VARCHAR" property="fsendtime" />
+    <result column="FSHIPPINGTYPE" jdbcType="VARCHAR" property="fshippingtype" />
+    <result column="FSTATUS" jdbcType="VARCHAR" property="fstatus" />
+    <result column="FSTEPPAIDFEE" jdbcType="VARCHAR" property="fsteppaidfee" />
+    <result column="FSTEPTRADESTATUS" jdbcType="VARCHAR" property="fsteptradestatus" />
+    <result column="FTID" jdbcType="BIGINT" property="ftid" />
+    <result column="FTIMEOUTACTIONTIME" jdbcType="TIMESTAMP" property="ftimeoutactiontime" />
+    <result column="FTITLE" jdbcType="VARCHAR" property="ftitle" />
+    <result column="FTOTALFEE" jdbcType="VARCHAR" property="ftotalfee" />
+    <result column="FTRADEFROM" jdbcType="VARCHAR" property="ftradefrom" />
+    <result column="FTRADEMEMO" jdbcType="VARCHAR" property="ftradememo" />
+    <result column="FTRADESOURCE" jdbcType="VARCHAR" property="ftradesource" />
+    <result column="FTYPE" jdbcType="VARCHAR" property="ftype" />
+    <result column="FYFXFEE" jdbcType="VARCHAR" property="fyfxfee" />
+    <result column="FYFXID" jdbcType="VARCHAR" property="fyfxid" />
+    <result column="FYFXTYPE" jdbcType="BIGINT" property="fyfxtype" />
+    <result column="FPLATFORMSHOPID" jdbcType="VARCHAR" property="fplatformshopid" />
+    <result column="FCONVERTCOUNT" jdbcType="INTEGER" property="fconvertcount" />
+    <result column="FCONVERTMSG" jdbcType="VARCHAR" property="fconvertmsg" />
+    <result column="FVERSION" jdbcType="INTEGER" property="fversion" />
+    <result column="FPLATFORMID" jdbcType="VARCHAR" property="fplatformid" />
+    <result column="fshoppick" jdbcType="BIT" property="fshoppick" />
+    <result column="fstorecode" jdbcType="VARCHAR" property="fstorecode" />
+    <result column="ftenantid" jdbcType="BIGINT" property="ftenantid" />
+    <result column="ftradeGenErrCount" jdbcType="INTEGER" property="ftradegenerrcount" />
+    <result column="ftradeGenErrMsg" jdbcType="VARCHAR" property="ftradegenerrmsg" />
+    <result column="finvoiceType" jdbcType="VARCHAR" property="finvoicetype" />
+    <result column="finvoiceKind" jdbcType="VARCHAR" property="finvoicekind" />
+    <result column="fbuyerTaxNO" jdbcType="VARCHAR" property="fbuyertaxno" />
+    <result column="FBUYERMEMO" jdbcType="LONGVARCHAR" property="fbuyermemo" />
+    <result column="FBUYERMESSAGE" jdbcType="LONGVARCHAR" property="fbuyermessage" />
+    <result column="FPICPATH" jdbcType="LONGVARCHAR" property="fpicpath" />
+    <result column="FSELLERMEMO" jdbcType="LONGVARCHAR" property="fsellermemo" />
+    <result column="FSNAPSHOT" jdbcType="LONGVARCHAR" property="fsnapshot" />
+    <result column="FSNAPSHOTURL" jdbcType="LONGVARCHAR" property="fsnapshoturl" />
+  </resultMap>
+
+  <select id="selectByTradeNum" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select FID, FTRADEPROCESSSTATUS, FCREATETIME, FSALEORDERID, FSALEORDERNUMBER, FLASTUPDATETIME, 
+    FADJUSTFEE, falipayid, FALIPAYNO, FALIPAYURL, FALIPAYWARNMSG, FAREAID, FAVAILABLECONFIRMFEE, 
+    fbuyeralipayno, FBUYERAREA, FBUYERCODFEE, fbuyeremail, FBUYERFLAG, fbuyernick, FBUYEROBTAINPOINTFEE, 
+    FBUYERRATE, FCANRATE, FCODFEE, FCODSTATUS, FCOMMISSIONFEE, FCONSIGNTIME, FCREATED, 
+    FCREDITCARDFEE, FDISCOUNTFEE, FENDTIME, FETICKETEXT, FEXPRESSAGENCYFEE, FHASBUYERMESSAGE, 
+    FHASPOSTFEE, FHASYFX, FIID, FINVOICENAME, FIS3D, FISBRANDSALE, FISFORCEWLB, FISLGTYPE, 
+    FISPARTCONSIGN, FLGAGING, FLGAGINGTYPE, FMARKDESC, FMODIFIED, FNUM, FNUMIID, FNUTFEATURE, 
+    FPAYTIME, FPAYMENT, FPOINTFEE, FPOSTFEE, FPRICE, FREALPOINTFEE, FRECEIVEDPAYMENT, 
+    freceiveraddress, FRECEIVERCITY, FRECEIVERDISTRICT, freceivermobile, freceivername, 
+    freceiverphone, FRECEIVERSTATE, FRECEIVERZIP, FSELLERALIPAYNO, FSELLERCANRATE, FSELLERCODFEE, 
+    FSELLEREMAIL, FSELLERFLAG, FSELLERMOBILE, FSELLERNAME, FSELLERNICK, FSELLERPHONE, 
+    FSELLERRATE, FSENDTIME, FSHIPPINGTYPE, FSTATUS, FSTEPPAIDFEE, FSTEPTRADESTATUS, FTID, 
+    FTIMEOUTACTIONTIME, FTITLE, FTOTALFEE, FTRADEFROM, FTRADEMEMO, FTRADESOURCE, FTYPE, 
+    FYFXFEE, FYFXID, FYFXTYPE, FPLATFORMSHOPID, FCONVERTCOUNT, FCONVERTMSG, FVERSION, 
+    FPLATFORMID, fshoppick, fstorecode, ftenantid, ftradeGenErrCount, ftradeGenErrMsg, 
+    finvoiceType, finvoiceKind, fbuyerTaxNO, FBUYERMEMO, FBUYERMESSAGE, FPICPATH, FSELLERMEMO, 
+    FSNAPSHOT, FSNAPSHOTURL
+    from t_sd_tbsobill
+    where ftid = #{ftid,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

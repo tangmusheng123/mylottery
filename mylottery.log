@@ -1,0 +1,11 @@
+2019-10-17 13:27:26.119  INFO 9028 --- [main] c.l.mylottery.MylotteryApplicationTests  : Starting MylotteryApplicationTests on 5PKJ69E0P7UE6FU with PID 9028 (started by guosh in E:\soft-project\alls\springboot-mybatis\mylottery)
+2019-10-17 13:27:26.124  INFO 9028 --- [main] c.l.mylottery.MylotteryApplicationTests  : The following profiles are active: dev
+2019-10-17 13:27:27.873  INFO 9028 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e4a4584c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-17 13:27:30.087  INFO 9028 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-17 13:27:30.170  INFO 9028 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: ServletContext resource [/index.html]
+2019-10-17 13:27:30.290  WARN 9028 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-10-17 13:27:31.024  INFO 9028 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-10-17 13:27:31.053  INFO 9028 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-10-17 13:27:31.076  INFO 9028 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-10-17 13:27:31.500  INFO 9028 --- [main] c.l.mylottery.MylotteryApplicationTests  : Started MylotteryApplicationTests in 5.869 seconds (JVM running for 6.943)
+2019-10-17 13:27:32.439  INFO 9028 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

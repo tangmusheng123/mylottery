@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.mylottery.dao.dao1.TFileMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.mylottery.dao.entity.db1.TFile">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="actId" jdbcType="INTEGER" property="actId" />
+    <result column="theType" jdbcType="VARCHAR" property="theType" />
+    <result column="showName" jdbcType="VARCHAR" property="showName" />
+    <result column="realUrl" jdbcType="VARCHAR" property="realUrl" />
+    <result column="previewUrl" jdbcType="VARCHAR" property="previewUrl" />
+    <result column="createDt" jdbcType="TIMESTAMP" property="createDt" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_file
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.mylottery.dao.entity.db1.TFile">
+    insert into t_file (showName, realUrl, previewUrl)
+    values (#{showName,jdbcType=VARCHAR}, #{realUrl,jdbcType=VARCHAR}, #{previewUrl,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.mylottery.dao.entity.db1.TFile">
+    update t_file
+    set actId = #{actId,jdbcType=INTEGER},
+      theType = #{theType,jdbcType=VARCHAR},
+      showName = #{showName,jdbcType=VARCHAR},
+      realUrl = #{realUrl,jdbcType=VARCHAR},
+      previewUrl = #{previewUrl,jdbcType=VARCHAR},
+      createDt = #{createDt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, actId, theType, showName, realUrl, previewUrl, createDt
+    from t_file
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, actId, theType, showName, realUrl, previewUrl, createDt
+    from t_file
+  </select>
+</mapper>

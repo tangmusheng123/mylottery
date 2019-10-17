@@ -1,0 +1,5 @@
+# 部署时候需要修改，开发环境dev,生产环境prod
+spring:
+    profiles:
+        active: dev
+
