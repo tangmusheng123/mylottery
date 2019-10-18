@@ -13,19 +13,19 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss # 设置时间返回格式
     time-zone: GMT+8
   datasource:
-    # css主测试数据库
+    # 主数据库
     db1:
       driverClassName: com.mysql.jdbc.Driver
       username: root
-      password: Test@123
-      jdbc-url: jdbc:mysql://10.0.1.171:3306/lattery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
+      password: KLxs8888
+      jdbc-url: jdbc:mysql://rm-bp178mt2593im687xjo.mysql.rds.aliyuncs.com:3306/lottery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
       type: com.alibaba.druid.pool.DruidDataSource
-    # ecc测试库
+    # ecc正式
     db2:
       driverClassName: com.mysql.jdbc.Driver
-      username: root
-      password: Imwv57sk
-      jdbc-url: jdbc:mysql://10.0.1.102:3306/baho_ecc_zhengshi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
+      username: baho_read
+      password: Baho@123
+      jdbc-url: jdbc:mysql://rr-k2jai63p1k611760v.mysql.zhangbei.rds.aliyuncs.com:3306/baho_ecc_zhengshi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
       type: com.alibaba.druid.pool.DruidDataSource
   cache:
     ehcache:
