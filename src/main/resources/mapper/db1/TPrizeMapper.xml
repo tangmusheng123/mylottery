@@ -78,7 +78,7 @@
         receiveDt = #{receiveDt,jdbcType=TIMESTAMP}
       </if>
     </trim>
-    where id in
+    where prizeStatus=0 and id in
     <foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
       #{idList[${index}]}
     </foreach>

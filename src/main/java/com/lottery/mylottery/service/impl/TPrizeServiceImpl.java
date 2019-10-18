@@ -55,7 +55,7 @@ public class TPrizeServiceImpl implements TPrizeService {
             if(tSdTbsobill==null || StringUtils.isBlank(fstatus) ){
                 return BaseResponse.error("查无此订单");
             }else if(!"TRADE_FINISHED".equalsIgnoreCase(fstatus)){
-                return BaseResponse.error("非交易成功状态不能领取,交易单号:"+billNum,DictConstant.tradeNumStatus.getByValue(fstatus));
+                return BaseResponse.error("物品收货之后领取,交易单号:"+billNum,DictConstant.tradeNumStatus.getByValue(fstatus));
             }
         }
         Integer receiveCount = tPrizeMapper.receivePrize(record);
