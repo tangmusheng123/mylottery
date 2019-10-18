@@ -18,7 +18,7 @@ spring:
       driverClassName: com.mysql.jdbc.Driver
       username: root
       password: Test@123
-      jdbc-url: jdbc:mysql://10.0.1.171:3306/lattery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
+      jdbc-url: jdbc:mysql://10.0.1.171:3306/lottery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
       type: com.alibaba.druid.pool.DruidDataSource
     # ecc测试库
     db2:

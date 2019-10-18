@@ -74,6 +74,9 @@
       <if test="prizeStatus != null" >
         prizeStatus = #{prizeStatus,jdbcType=INTEGER},
       </if>
+      <if test="deviceInfo != null" >
+        deviceInfo = #{deviceInfo,jdbcType=VARCHAR},
+      </if>
       <if test="receiveDt != null" >
         receiveDt = #{receiveDt,jdbcType=TIMESTAMP}
       </if>
