@@ -24,7 +24,7 @@ public class SysUserController {
     @ResponseBody
     public BaseResponse swagger(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.sendRedirect("/mylottery/swagger-ui.html");
+            response.sendRedirect("/swagger-ui.html");
         } catch (Exception e) {
             LOGGER.error("登陆异常："+e.getMessage());
         }
