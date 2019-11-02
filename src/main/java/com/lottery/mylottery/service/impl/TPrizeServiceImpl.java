@@ -50,12 +50,16 @@ public class TPrizeServiceImpl implements TPrizeService {
         //验证当前交易订单状态是否为“TRADE_FINISHED”,交易成功
         for (TPrize tPrize : unCount) {
             String billNum = tPrize.getBillNum();
-            TSdTbsobill tSdTbsobill = tSdTbsobillMapper.selectByTradeNum(billNum);
-            String fstatus=tSdTbsobill.getFstatus();
-            if(tSdTbsobill==null || StringUtils.isBlank(fstatus) ){
-                return BaseResponse.error("查无此订单");
-            }else if(!"TRADE_FINISHED".equalsIgnoreCase(fstatus)){
-                return BaseResponse.error("交易单号:"+billNum+",请您确认收货之后重新尝试",DictConstant.tradeNumStatus.getByValue(fstatus));
+            if(StringUtils.isNotBlank(billNum)){
+                TSdTbsobill tSdTbsobill = tSdTbsobillMapper.selectByTradeNum(billNum);
+                if(tSdTbsobill!=null){
+                    String fstatus=tSdTbsobill.getFstatus();
+                    if(tSdTbsobill==null || StringUtils.isBlank(fstatus) ){
+                        return BaseResponse.error("查无此订单");
+                    }else if(!"TRADE_FINISHED".equalsIgnoreCase(fstatus)){
+                        return BaseResponse.error("交易单号:"+billNum+",请您确认收货之后重新尝试",DictConstant.tradeNumStatus.getByValue(fstatus));
+                    }
+                }
             }
         }
         Integer receiveCount = tPrizeMapper.receivePrize(record);
