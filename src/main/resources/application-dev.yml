@@ -17,15 +17,15 @@ spring:
     db1:
       driverClassName: com.mysql.jdbc.Driver
       username: root
-      password: Test@123
-      jdbc-url: jdbc:mysql://10.0.1.171:3306/lottery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
+      password: 123456
+      jdbc-url: jdbc:mysql://localhost:3306/lottery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
       type: com.alibaba.druid.pool.DruidDataSource
     # ecc测试库
     db2:
       driverClassName: com.mysql.jdbc.Driver
       username: root
-      password: Imwv57sk
-      jdbc-url: jdbc:mysql://10.0.1.102:3306/baho_ecc_zhengshi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
+      password: 123456
+      jdbc-url: jdbc:mysql://localhost:3306/baho_ecc_zhengshi?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&autoReconnect=true&rewriteBatchedStatements=TRUE
       type: com.alibaba.druid.pool.DruidDataSource
   cache:
     ehcache:

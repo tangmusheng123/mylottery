@@ -115,8 +115,6 @@ public class IPUtil {
             //测试环境
             if(ip.startsWith("10.0.5.") || ip.startsWith("10.0.1.") || ip.startsWith("192.168.") || "127.0.0.1".equals(ip) || "localhost".equalsIgnoreCase(ip)){
                 localIP = false;
-            }else if("47.110.235.181".equals(ip)){
-                localIP = true;//pms正式环境
             }
             logger.info(ip);
         } catch (Exception e) {

@@ -39,8 +39,8 @@
                         connectionURL="jdbc:mysql://10.0.1.171:3306/lattery" userId="root"
                         password="Test@123"/>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.0.1.102:3306/baho_ecc_zhengshi" userId="root"
-                        password="Imwv57sk"/>
+                        connectionURL="jdbc:mysql://localhost:3306/baho_ecc_zhengshi" userId="root"
+                        password="123456"/>
 
         <!-- 类型转换 -->
         <javaTypeResolver>

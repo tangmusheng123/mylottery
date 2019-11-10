@@ -7,12 +7,12 @@ public class OSSClientConstants {
     //阿里云API的外网域名
     public static final String ENDPOINT = "http://oss-cn-hangzhou.aliyuncs.com";
     //阿里云API的密钥Access Key ID
-    public static final String ACCESS_KEY_ID = IPUtil.getIpReal() ? "LTAINcmV8av7ao2A":"LTAIvZRrSH0xRwa0";
+    public static final String ACCESS_KEY_ID = "你的ACCESS_KEY_ID";
     //阿里云API的密钥Access Key Secret
-    public static final String ACCESS_KEY_SECRET = IPUtil.getIpReal() ? "mZ9xr8Sw3YZ3N2J2YBYn7ghYTGfdf7":"30BEs5dt5AiRKBVgTCrVn1XIxZd87N";
+    public static final String ACCESS_KEY_SECRET = "你的ACCESS_KEY_SECRET";
     //阿里云API的bucket名称
-    public static final String BACKET_NAME = IPUtil.getIpReal() ? "baho-pms":"baho";
-    public static final String BACKET_GOOSDNAME = IPUtil.getIpReal() ? "baho-pms-goods":"baho-goods";
+    public static final String BACKET_NAME = "你的bucket名称";
+    public static final String BACKET_GOOSDNAME = "你的bucket2名称";
     //阿里云API的文件夹名称
     public static final String FOLDER="user/";
     public static String USER_ID = IPUtil.getIpReal() ? "zhengshi": "ceshi";

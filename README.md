@@ -12,9 +12,7 @@
 * 缓存：Ehcache
 
 ### 注意事项：更新缓存需要执行的接口
-* 本地环境：http://localhost:8080/lottery/updateActInfo?id=1&platformType=kub&actType=ceshi
-* 测试环境：https://ityp.baho.cn:8094/mylottery/lottery/updateActInfo?id=1&platformType=kub&actType=ceshi
-* 正式环境：http://tools.baho.cn:30002/mylottery/lottery/updateActInfo?id=1&platformType=kub&actType=ceshi
+* 本地环境：http://localhost:8080/lottery/updateActInfo?id=1&platformType=kub
 
 ### 访问接口文档swagger
 * http://localhost:8080/swagger-ui.html 或 调用接口http://localhost:8080/sysUser/swagger
