@@ -71,6 +71,9 @@ public class LotteryController {
     @ResponseBody
     @RequestMapping(value = "/getActInfo")
     public BaseResponse getActInfo(@RequestParam(value="platformType",required = false) String platformType) {
+        if(StringUtils.isBlank(platformType)){
+            return BaseResponse.error("参数不能为空");
+        }
         List<TAct> obj = tActService.getActInfo(platformType);
         return BaseResponse.success(obj);
     }
@@ -80,7 +83,7 @@ public class LotteryController {
     @RequestMapping(value = "/updateActInfo")
     public BaseResponse updateActInfo(TAct record) {
         if(record==null || record.getId()==null || StringUtils.isBlank(record.getPlatformType())){
-            BaseResponse.error("参数不能为空");
+            return BaseResponse.error("参数不能为空");
         }
         List<TAct> in=tActService.updateByPrimaryKey(record);
         return BaseResponse.success(in);
