@@ -15,6 +15,7 @@
 * 本地环境：http://localhost:8080/lottery/updateActInfo?id=1&platformType=kub
 
 ### 访问接口文档swagger
+* http://localhost:8080/
 * http://localhost:8080/swagger-ui.html 或 调用接口http://localhost:8080/sysUser/swagger
 
 ### Guides

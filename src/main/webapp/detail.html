@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- 启用 WebApp 全屏模式 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <title>查询结果</title>
+    <link rel="stylesheet" href="./css/detail.css">
+    <link rel="stylesheet" href="./fonticon/iconfont.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="top">
+            <div class="top-back">
+                <i class="iconfont icon-zuojiantou backImg"></i>
+            </div>
+            <div class="inputDiv">
+                <span class="cancle"><img src="./img/XX.png" alt=""></span>
+                <input type="search" id="inp" placeholder="请输入订单号">
+                <i class="iconfont icon-sousuo searchImg"></i>
+            </div>
+        </div>
+        <div class="content">
+            <!-- <div class="cardBox">
+                <div class="box-checke">
+                    <input type="checkbox" class='inputList' value='111'>
+                </div>
+                <ul class="box">
+                    <li class="li-top">
+                        <div class='ddID'> <i class="iconfont icon-wenjian"></i> ididdidi
+                        </div>
+                        <span class="{item.getStatus?'success':'warning'}">'已领取':'待领取'</span>
+                    </li>
+                    <li class="li-con">
+                        <span>商品名称: <span class='activeName'>爬爬垫</span></span>
+                        <span>活动名称:
+                             <span class='activeName'>
+                                 东莞市德国大使馆
+                            </span>
+                        </span>
+                        <span>奖品信息: 
+                            <span class='activeName'>
+                                天猫优惠
+                            </span>
+                        </span>
+                        <span class="time"> <i class="iconfont icon-shijian"></i>2018-12-12 00:00:00</span>
+                    </li>
+                    <li class="li-bottom">
+                        <span class="${item.ddStatus=='交易成功'?'success':'warning'}">交易成功</span>
+                    </li>
+                    <li class="tip">
+                        确认收货后即可领取礼包呦!
+                    </li>
+                </ul>
+            </div> -->
+
+        </div>
+        <div class="bottom">
+            <div class="checked all">
+                <input type="checkbox" id="checkall">
+                <label>全选</label>
+            </div>
+            <button class="getall">领取
+            </button>
+        </div>
+
+    </div>
+    <!-- 领取结果 -->
+    <div class="dialog">
+        <ul class="dia-ul">
+            <li class="dia-top">提示:</li>
+            <li class="dia-body">
+                领取成功,请耐心等待!
+            </li>
+            <li class="dia-footer"><button>确认</button></li>
+        </ul>
+    </div>
+    <div class="max-dialog">
+    </div>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/config.js"></script>
+<script src="./js/allset.js"></script>
+
+<script>
+    let idListArr = []
+    let isgetNew = false
+    let isDiai = window.localStorage.isDiai == 'true'
+    if (isDiai) {
+        $('.bottom .getall').css('background', 'none')
+        $('.bottom .getall').css('backgroundColor', '#b4a68f')
+        $('input[type = checkbox]').css('color', '#b4a68f !important')
+        $('.success').css('color', '#b4a68f')
+    }
+    $(document).ready(function() {
+            $("#inp").bind("input propertychange change", function(event) {
+                // console.log($("#inp").val())
+                if ($("#inp").val()) {
+                    $('.cancle ').css('visibility', 'visible')
+                } else {
+                    $('.cancle ').css('visibility', 'hidden')
+                }
+            });
+            $('.cancle ').click(function() {
+                $("#inp").val('')
+                $('.cancle ').css('visibility', 'hidden')
+            })
+
+            // 自动聚焦输入框
+            $('#inp').focus()
+            $('.searchImg').click(function() {
+                if ($('#inp').val()) {
+                    inquire()
+                }
+                return
+            })
+            $(".top-back").click(function() {
+
+                    // window.history.back()
+                    let search = isDiai ? 'diai' : 'kub'
+                    console.log('search', search);
+
+                    self.location = 'index.html?' + search;
+                })
+                // 创建节点
+            createdDom()
+                // 单选点击
+            $('.content').find('input').click(function(e) {
+                    e.stopPropagation();
+                    // $(this).val()
+                    let checkedDiv = $(this).parentsUntil('.content')[1]
+                    if ($(this).is(":checked")) {
+                        if (isDiai) {
+                            $(checkedDiv).css('box-shadow', '0 2px 12px 0 #b4a68f')
+                        } else {
+                            $(checkedDiv).css('box-shadow', '0 2px 12px 0 #41DFBB')
+                        }
+
+                    } else {
+                        $(checkedDiv).css('box-shadow', 'none')
+                    }
+                    let ischeckedAll = true
+                    var arr = $('.content input').map(function() {
+                        var isChecked = $(this).is(":checked");
+                        if (isChecked) {
+                            return {
+                                id: $(this).val()
+                            }
+                        } else {
+                            ischeckedAll = false
+                        }
+                    }).get();
+                    // 选中结果
+                    idListArr = arr
+                        // console.log(arr)
+                        // 判断是否全选
+                    if (ischeckedAll) {
+                        $('#checkall').prop('checked', true);
+                    } else {
+                        $('#checkall').prop('checked', false);
+                    }
+
+                })
+                // 卡片点击
+            $('.cardBox').click(function(e) {
+                    $(this).find('input').click()
+                    e.stopPropagation();
+                })
+                // 全选反选
+            $('.all').click(function(e) {
+                $('#checkall').click()
+                e.stopPropagation();
+            })
+            $('#checkall').click(function(e) {
+                if ($(this).prop('checked')) {
+                    $('.content').find('input').each(
+                        function() {
+                            $(this).prop('checked', false);
+                            $(this).click();
+                        });
+                } else {
+                    $('.content').find('input').each(
+                        function() {
+                            $(this).prop('checked', true);
+                            $(this).click();
+                        });
+                }
+                e.stopPropagation();
+            });
+            // 全选反选 end
+            //一键领取
+            $('.getall').click(function(e) {
+                    if (idListArr.length === 0) {
+                        //提示选择
+                        $('.dia-body').text('请先选中订单!')
+                        $('.dialog').css('visibility', 'visible')
+                        return
+                    }
+                    getAll()
+                    e.stopPropagation();
+                })
+                // 弹框取消
+            $('.dia-footer button').click(function(e) {
+                // 重新拉取数据
+                if (isgetNew) {
+                    inquire('getAll')
+                }
+                $('.dialog').css('visibility', 'hidden')
+                e.preventDefault();
+            });
+            $('.dialog').click(function() {
+                $('.dialog').css('visibility', 'hidden')
+            })
+        })
+        //创建节点
+    function createdDom() {
+        $('.content').empty()
+        let Data = JSON.parse(window.localStorage.dataList);
+        let detailData = Data.map(item => {
+                console.log('item', item);
+                let item1 = {}
+                item1['ddID'] = item.billNum || '无'
+                item1.id = item.id || '无'
+                item1.goodsName = item.goodsName || '无'
+                item1.getStatus = item.prizeStatus || ''
+                item1.activeName = item.actName || '无'
+                item1.prizeType = item.prizeType || '无'
+                item1.ddStatus = item.billNumStatus || '未获取到订单状态'
+                item1.time = item.orderDt || '无'
+                return item1
+            })
+            // 获取查询结果
+            // dataArr//detailData
+        detailData.forEach(item => {
+            //             let box = `
+            // <div class="cardBox">
+            //                 <div class="box-checke">
+            //                     <input type="checkbox" class='inputList' value='${item.id}'>
+            //                 </div>
+            //                 <ul class="box">
+            //                     <li class="li-top">
+            //                         <span class='ddID'> <i class="iconfont icon-wenjian"></i> ${item.ddID}</span>
+            //                         <span class="${item.getStatus?'success':'warning'}">${item.getStatus?'已领取':'待领取'}</span>
+            //                     </li>
+            //                     <li class="li-con">
+            //                         <span>活动名称: <span class='activeName'>${item.activeName}</span></span>
+            //                         <span>奖品信息:</span>
+            //                         <p> ${item.prizeType}</p>
+            //                         <span class="time"> <i class="iconfont icon-shijian"></i>${item.time}</span>
+            //                     </li>
+            //                     <li class="li-bottom"> 
+            //                         <span class="${item.ddStatus=='交易成功'?'success':'warning'}">${item.ddStatus}</span>
+            //                     </li>
+            //                     <li class="tip" style='${item.getStatus?'display:none':''}'>
+            //                         确认收货后即可领取礼包呦!
+            //                     </li>
+            //                 </ul>
+            //             </div>
+
+            // `
+            let box1 =
+                ` <div class="cardBox">
+                <div class="box-checke">
+                    <input type="checkbox" class='inputList' value='${item.id}'>
+                </div>
+                <ul class="box">
+                    <li class="li-top">
+                        <div class='ddID'> <i class="iconfont icon-wenjian"></i> ${item.ddID}
+                        </div>
+                        <span class="${item.getStatus?'success':'warning'}">${item.getStatus?'已领取':'待领取'}</span>
+                    </li>
+                    <li class="li-con">
+                        <span>商品名称: <span class='activeName'>${item.goodsName}</span></span>
+                        <span>活动名称:
+                             <span class='activeName'>
+                                 ${item.activeName}
+                            </span>
+                        </span>
+                        <span>奖品信息: 
+                            <span class='activeName'>
+                                ${item.prizeType}
+                            </span>
+                        </span>
+                        <span class="time"> <i class="iconfont icon-shijian"></i>${item.time}</span>
+                    </li>
+                    <li class="li-bottom"> 
+                                     <span class="${item.ddStatus=='交易成功'?'success':'warning'}">${item.ddStatus}</span>
+                                 </li>
+                    <li class="tip"  style='${item.getStatus?'display:none':''}'>
+                        确认收货后即可领取礼包呦!
+                    </li>
+                </ul>
+            </div>
+
+`
+            $('.content').append(box1)
+            if (isDiai) {
+                $('.activeName,.li-con p,.wrap i').css('color', '#b4a68f')
+                $('.top .inputDiv').css('border', '1.5px solid #b4a68f')
+                $('.success').css('color', '#b4a68f')
+            } else {
+                $('.wrap i').css('color', '#41DFBB')
+            }
+        })
+    }
+    // 一键领取 idListArr
+    function getAll() {
+
+        const params = {
+            idList: idListArr
+        }
+
+        $.ajax({
+            type: 'post',
+            url: getAllUrl,
+            contentType: "application/json;charset=UTF-8",
+            data: JSON.stringify(params),
+            dataType: 'json',
+            success: function(res) {
+                console.log('一键领取', res);
+                // $('.dia-body').empty();
+                $('.dia-body').text(res.msg)
+                $('.dialog').css('visibility', 'visible')
+                isgetNew = false
+                if (res.code == 200) {
+                    let data = res.data
+                    console.log('一键领取200', data);
+                    //重新获取
+                    isgetNew = true
+                }
+            },
+            error: function(msg) {
+                console.log(msg)
+            }
+        })
+    }
+    //查询结果
+    function inquire(type) {
+        $('max-dialog').css('visibility', 'visible')
+        let inquireParams = {
+                target: $('#inp').val(),
+                platformType: window.localStorage.isDiai == 'true' ? 'diai' : 'kub'
+            }
+            // 领取后新请求
+        if (type == 'getAll') {
+            inquireParams = JSON.parse(window.localStorage.inquireParams)
+        } else {
+            if ($('#inp').val() == '') {
+                return
+            }
+        }
+        console.log('inquireParams3333', inquireParams);
+
+        $.ajax({
+            type: 'post',
+            url: inquireUrl,
+            data: inquireParams,
+            dataType: 'json',
+            success: function(res) {
+                if (res.code == 200) {
+                    let data = res.data
+                    console.log('res.data', data);
+                    if (data.length === 0) {
+                        $('.dia-body').text('未中奖')
+                        $('.dialog').css('visibility', 'visible')
+                    } else {
+                        // 重新赋值新数据且保留查询条件
+                        window.localStorage.dataList = ''
+                        window.localStorage.dataList = JSON.stringify(data)
+                        window.localStorage.inquireParams = ''
+                        window.localStorage.inquireParams = JSON.stringify(inquireParams)
+                            //刷新当前页面.
+                        window.location.reload()
+                    }
+
+                }
+                $('max-dialog').css('visibility', 'hidden')
+            },
+            error: function(msg) {
+                $('max-dialog').css('visibility', 'hidden')
+                console.log(msg)
+            }
+        })
+
+    }
+    $('.bottom').offset({
+            left: $('.wrap').offset().left,
+            bottom: 0
+        })
+        //浏览器窗口大小变化时
+    $(window).resize(function() {
+        // var window_width = $(window).width(); //获取浏览器窗口宽度
+        // $('.wrap').clientleft()
+        console.log('', $('.wrap').offset());
+        $('.bottom,.top').offset({
+            left: $('.wrap').offset().left,
+            bottom: 0
+        })
+    });
+</script>
+
+</html>

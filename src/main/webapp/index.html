@@ -1,33 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" >
-    </script>
+    <meta name="keywords" content="中奖,查询,活动详情,订单状态">
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- 启用 WebApp 全屏模式 -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>中奖查询</title>
+    <link rel="dns-prefetch" href="//localhost:8080">
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./fonticon/iconfont.css">
 </head>
+
 <body>
-<form id="myFormId" action="http://localhost:8080/file/uploadFile" method="post" enctype="multipart/form-data" >
-    <table class="tableStyle" formMode="transparent">
-        <tr></tr>
-        <tr>
-            <td>
-                <input type="file" id="file" name="file" />
-            </td>
-        </tr>
-        <tr>
-            <td>年份</td>
-            <td><input type="text" name="year" ><br/></td>
-        </tr>
-        <tr>
-            <td>月份</td>
-            <td><input type="text" name="month"/><br/></td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <input type="submit" value="提交数据"/>
-        </tr>
-    </table>
-</form>
+    <div class="wrap">
+        <div class="top">
+            <img class="kub" src=" " alt="" />
+        </div>
+        <div class="content">
+            <h2 class="content-top">中奖查询</h2>
+            <div class="content-search">
+                <div class="search-inp">
+                    <input id="inp" type="search" placeholder="请输入订单号/昵称" />
+                    <!-- <i class="iconfont icon-quxiao cancle"></i> -->
+                    <span class="cancle"><img src="./img/XX.png" alt=""></span>
+                </div>
+                <button class="btn">查&nbsp;询</button>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="bottom-name">活动详情</div>
+            <div class="box11"> </div>
+            <!--
+            <div class="ul">
+                <p class="li-name">活动名称:</p>
+                <p class="li-p">地方是谁发的啥地方还是的哈弗哈师大发哈放过些粉红色的风格化</p>
+            </div> -->
+        </div>
+        <!-- 未中奖弹框 -->
+        <div class="mengban">
+            <div class="img">
+                <i class="iconfont icon-quxiao exit"></i>
+                <img class="wei" src="./img/weibg.png" alt="" />
+                <div class="tip">
+                    <p class="p">加入会员增加中奖概率!</p>
+                    <img class="guanzhu" src="./img/ruhui.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="max-dialog">
+
+    </div>
+    <script src="./js/config.js"></script>
 </body>
+
+<script src="./js/allset.js"></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script>
+    // 判断浏览器类型--开始
+    let bool = false
+    let ua = navigator.userAgent.toLowerCase()
+    if (ua.indexOf('mobi') != -1) {
+        // 手机浏览器
+        if (ua.indexOf('android') != -1) {
+            console.log('移动端 安卓')
+        } else if (
+            ua.indexOf('ipod') != -1 ||
+            ua.indexOf('iphone') != -1 ||
+            ua.indexOf('ipad') != -1
+        ) {
+            console.log('移动端  苹果手机')
+        }
+
+    } else {
+        $('.content').css('marginTop', '13rem')
+        $('.kub').css('width', '70px')
+        $('.kub').css('height', '70px')
+            // 非手机浏览器
+        console.log('pc端')
+    }
+    $('.wrap').css('backgroundImage', 'url(' + kubbgImg + ')')
+        // 判断浏览器类型-- 结束
+    $(document).ready(function() {
+        $("#inp").bind("input propertychange change", function(event) {
+            // console.log($("#inp").val())
+            if ($("#inp").val()) {
+                $('.cancle ').css('visibility', 'visible')
+                $('#inp').css('border', 'none')
+                $('#inp').css('border-bottom', '1px solid #7A7B80')
+            } else {
+                $('.cancle ').css('visibility', 'hidden')
+            }
+        });
+        $('.cancle ').click(function() {
+                $("#inp").val('')
+                $('.cancle ').css('visibility', 'hidden')
+            })
+            // 自动聚焦输入框
+        $('#inp').focus()
+            // 查询按钮
+        $('.btn').click(function() {
+            $('max-dialog').css('visibility', 'visible')
+            inquire(bool)
+        })
+        $('.mengban,.exit').click(function(e) {
+            failedBack()
+            e.stopPropagation();
+        })
+        $('.img').click(function(e) {
+                e.stopPropagation()
+            })
+            //失败跳转关注
+        $('.guanzhu').click(function(event) {
+            console.log('跳转关注页');
+
+            event.stopPropagation();
+        })
+    })
+
+    // 失败蒙版
+    function failed() {
+        $('.top,.content,.bottom').css('display', 'none')
+        $('.mengban').css('visibility', 'visible')
+    }
+    // 失败页面取消
+    function failedBack() {
+        $('.top,.content,.bottom').css('display', 'block')
+        $('.mengban').css('visibility', 'hidden')
+    }
+    // 请求活动详情
+    function getMsg(m) {
+        $.ajax({
+            type: 'post',
+            url: getmsgList,
+            data: {
+                platformType: m ? 'diai' : 'kub'
+            },
+            dataType: 'json',
+            success: function(res) {
+                // console.log('MSG', res.data);
+                if (res.code == 200) {
+                    let data = res.data
+                    console.log('请求活动详情', red.data);
+                    // creatActiveDom(data)
+                }
+            },
+            error: function(msg) {
+                console.log(msg)
+            }
+        })
+    }
+    // 创建活动详情
+    function creatActiveDom(params) {
+        $('.box11').empty()
+            // $('.bottom').append(`<div class="bottom-name">活动详情</div>`)
+        params.forEach(item => {
+            let box = `
+             <div class="ul">
+                <p class="li-name">${item.actName} :</p>
+                <p class="li-p">${item.actInfo}</p>
+            </div>`
+            $('.box11').append(box);
+        })
+    }
+    //查询结果
+    function inquire(type) {
+        if ($('#inp').val() == '') {
+
+            $('#inp').css('border', '1px solid red')
+            return
+        }
+        let inquireParams = {
+            target: $('#inp').val(),
+            platformType: bool ? 'diai' : 'kub'
+        }
+
+        $.ajax({
+            type: 'post',
+            url: inquireUrl,
+            data: inquireParams,
+            dataType: 'json',
+            success: function(res) {
+                if (res.code == 200) {
+                    let data = res.data
+                        // console.log('res.data', data);
+                    if (data.length === 0) {
+                        failed()
+                    } else {
+                        let box = `<h1>请求结果</h1> <p>${JSON.stringify(data)}</p>`
+                        $('.box11').append(box);
+                        // 重新赋值新数据且保留查询条件
+                        window.localStorage.dataList = ''
+                        window.localStorage.dataList = JSON.stringify(data)
+                        window.localStorage.inquireParams = ''
+                        window.localStorage.inquireParams = JSON.stringify(inquireParams)
+                            // self.location = 'detail.html';
+                    }
+
+                }
+                $('max-dialog').css('visibility', 'hidden')
+            },
+            error: function(msg) {
+                $('max-dialog').css('visibility', 'hidden')
+                console.log(msg)
+            }
+        })
+
+    }
+</script>
+
 </html>

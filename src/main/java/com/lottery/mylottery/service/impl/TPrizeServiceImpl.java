@@ -26,7 +26,7 @@ public class TPrizeServiceImpl implements TPrizeService {
     public BaseResponse findByObject(String target,String platformType) {
         List<TPrize> list = tPrizeMapper.findByObject(target,platformType);
         if(list!=null && list.size()>0){
-            for (TPrize tPrize : list) {
+            /*for (TPrize tPrize : list) {
                 TSdTbsobill tSdTbsobill = new TSdTbsobill();
                 String billNum = tPrize.getBillNum();
                 if(StringUtils.isNotBlank(billNum)){
@@ -36,7 +36,7 @@ public class TPrizeServiceImpl implements TPrizeService {
                         tPrize.setBillNumStatus(DictConstant.tradeNumStatus.getByValue(fstatus));
                     }
                 }
-            }
+            }*/
         }
         return BaseResponse.success(list);
     }
@@ -48,7 +48,7 @@ public class TPrizeServiceImpl implements TPrizeService {
             return BaseResponse.error("您的奖品已经领取过了");
         }
         //验证当前交易订单状态是否为“TRADE_FINISHED”,交易成功
-        for (TPrize tPrize : unCount) {
+        /*for (TPrize tPrize : unCount) {
             String billNum = tPrize.getBillNum();
             if(StringUtils.isNotBlank(billNum)){
                 TSdTbsobill tSdTbsobill = tSdTbsobillMapper.selectByTradeNum(billNum);
@@ -61,7 +61,7 @@ public class TPrizeServiceImpl implements TPrizeService {
                     }
                 }
             }
-        }
+        }*/
         Integer receiveCount = tPrizeMapper.receivePrize(record);
         if(receiveCount!=null && receiveCount>0){
             return BaseResponse.success("成功领取"+receiveCount.toString()+"个奖品");

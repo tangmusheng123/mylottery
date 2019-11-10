@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+body,
+html {
+    /* background-color: #678794; */
+    font-family: Microsoft YaHei;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0px;
+    width: 100%;
+    height: 100%;
+    color: #2c3e50;
+}
+
+.wrap {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    /* background-image: url("../img/bg.png"); */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0 auto;
+    padding: 1.2rem;
+}
+
+.wrap i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+
+/* 顶部 */
+
+.top {
+    width: 100%;
+    height: 100px;
+    min-height: 90px;
+    position: relative;
+}
+
+.top .kub {
+    position: absolute;
+    top: 20px;
+    left: 0.1rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+
+
+/* 中部 */
+
+.content {
+    margin-top: 3rem;
+    box-sizing: border-box;
+    /* width: 100%; */
+    height: 11rem;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 1.2rem 1.4rem;
+}
+
+.content input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.content-top {
+    text-align: center;
+    color: #7A7B80;
+    letter-spacing: 2px;
+}
+
+.content-search {
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-search #inp {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 1px solid #7A7B80;
+    font-size: 1.1rem;
+}
+
+.search-inp {
+    position: relative;
+    width: calc(100% - 6rem);
+}
+
+.cancle {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    visibility: hidden;
+}
+
+.cancle img {
+    width: 15px;
+}
+
+
+/* 底部 */
+
+.bottom {
+    box-sizing: border-box;
+    padding: 1.2rem 0;
+    margin-top: 0.9rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.bottom-name {
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.bottom .ul {
+    padding: 10px 0;
+    padding-bottom: 1rem;
+}
+
+.bottom .li-name {
+    font-size: 1rem;
+}
+
+.bottom .li-p {
+    text-indent: 2em;
+    font-size: 0.9rem;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    color: #fff;
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+    font-stretch: normal;
+    border-radius: 20px;
+    background: -webkit-linear-gradient(left top, #2AC9CF, #41DFBB);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #2AC9CF, #41DFBB);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #2AC9CF, #41DFBB);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #2AC9CF, #41DFBB);
+    /* 标准的语法 */
+}
+
+.btn:active {
+    /* border: #fff;
+    box-shadow: none; */
+}
+
+input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #E7E7E7;
+}
+
+input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #E7E7E7;
+}
+
+input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #E7E7E7;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #E7E7E7;
+}
+
+
+/* 状态色彩 */
+
+.success {
+    color: #41DFBB;
+}
+
+.warning {
+    color: #E6A23C;
+}
+
+.danger {
+    color: #F56C6C;
+}
+
+
+/* 弹框部分 */
+
+.mengban {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 750px;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    margin: 0 auto;
+}
+
+.mengban .img {
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    z-index: 6;
+}
+
+.mengban .wei {
+    width: 100%;
+    height: 300px;
+    max-width: 400px;
+}
+
+.mengban .tip {
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    text-align: center
+}
+
+.mengban .p {
+    width: 100%;
+    color: #F03838;
+    margin: 10px 0;
+}
+
+.mengban .guanzhu {
+    width: 100px;
+    height: 38px;
+}
+
+.mengban .exit {
+    position: absolute;
+    top: 4px;
+    right: 1px;
+    /* background-color: #999; */
+    color: red;
+}
+
+.max-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(1, 1, 1, 0.2);
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
